@@ -1,3 +1,9 @@
+# Title: Binary Math
+# Description: A program with various simple binary operations
+# Author: Nathan Walker
+# Version: Beta 2.1
+# Date: 9-23-23
+
 # ***METHOD DEFINITIONS***
 
 
