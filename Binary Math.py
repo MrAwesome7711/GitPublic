@@ -1,7 +1,7 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: Beta 3.0
+# Version: Beta 3.1
 # Date: 9-24-23
 
 
@@ -21,7 +21,7 @@ RESET = "\u001b[0m"
 
 # Header text method
 def header():
-    print("\n\n       ****   Binary Math Program (Beta 3.0)   ****\n\n")
+    print("\n\n       ****   Binary Math Program (Beta 3.1)   ****\n\n")
     print("                                     (c) Walker Tech inc.")
 
 # menu text method
@@ -173,6 +173,7 @@ def devMenu():
         print("Also sorry no color but this is dev menu so deal with it")
         print("[1] normalize binary number")
         print("[2] Base binary addition method")
+        print("[3] Color Menu")
         print("[0] Return to previous menu\n")
         selection = input("Select and option: ")
         print("\n")
@@ -187,15 +188,51 @@ def devMenu():
             argument1 = str(input("Do you want answer or buffer?: "))
             print("Answer: " + oneAddSub(number1, number2, argument1))
             print(newLine)
-#        elif selection == "3":
-#            print(newLine)
+        elif selection == "3":
+            colorMenu()
 #        elif selection == "4":
 #            print(newLine)
         elif selection == "0":
             break
         else:
             print("invalid input" + newLine)
-        
+
+# Color Menu        
+def colorMenu():
+    print("Color Menu")
+    print("[1] Black")
+    print("[2] Red")
+    print("[3] Green")
+    print("[4] Blue")
+    print("[5] Magenta")
+    print("[6] Cyan")
+    print("[7] White")
+    selection = input(YELLOW + "Select a menu option: " + RED)
+    print(WHITE + "\n\n")
+    if selection == "1":
+        print(BLACK)
+        exit()
+    elif selection == "2":
+        print(RED)
+        exit()
+    elif selection == "3":
+        print(GREEN)
+        exit()
+    elif selection == "4":
+        print(BLUE)
+        exit()
+    elif selection == "5":
+        print(MAGENTA)
+        exit()
+    elif selection == "6":
+        print(CYAN)
+        exit()
+    elif selection == "7":
+        print(WHITE)
+        exit()
+
+
+
 
 
 
