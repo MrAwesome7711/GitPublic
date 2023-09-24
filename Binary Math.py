@@ -1,21 +1,28 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: Beta 2.1
+# Version: Beta 2.2
 # Date: 9-23-23
 
 # ***METHOD DEFINITIONS***
 
+# Header text method
+def header():
+    print("\n\n       ****   Binary Math Program (Beta 2.2)   ****\n\n")
+    print("                                     (c) Walker Tech inc.")
 
 # menu text method
 def menu():
-    print("       ****   Main Menu   ****\n")
-    print("[1] Find one's complement of a binary number")
-    print("[2] Find two's complement of a binary number")
-    print("[3] Add two numbers using one's complement")
-    print("[4] Add two numbers using two's complement")
-    print("[5] Developer menu")
-    print("[0] Exit program\n")
+    print("*********************************************************\n")
+    print("                       Main Menu                         \n")
+    print("*********************************************************\n")
+    print("**     [1] Find one's complement of a binary number")
+    print("**     [2] Find two's complement of a binary number")
+    print("**     [3] Add two numbers using one's complement")
+    print("**     [4] Add two numbers using two's complement")
+    print("**     [5] Developer menu")
+    print("**     [0] Exit program\n")
+    print("*********************************************************\n")
 
 
 # Find one's complement of a binary number
@@ -179,10 +186,10 @@ def devMenu():
 
 # ****MAIN METHOD****
 newLine = "\n \n \n"
-print ("[****  WELCOME TO THE BINARY MATH PROGRAM!!!  ****]\n\n")
+header()
 while (True):
     menu()
-    selection = input("Select and option: ")
+    selection = input("Select a menu option: ")
     print("\n")
     if selection == "1":
         ones()
