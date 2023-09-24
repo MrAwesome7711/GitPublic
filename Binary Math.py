@@ -1,34 +1,49 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: Beta 2.2
-# Date: 9-23-23
+# Version: Beta 3.0
+# Date: 9-24-23
+
+
+
+# Color Definitions
+BLACK = "\u001b[30m"
+RED = "\u001b[31m"
+GREEN = "\u001b[32m"
+YELLOW = "\u001b[33m"
+BLUE = "\u001b[34m"
+MAGENTA = "\u001b[35m"
+CYAN = "\u001b[36m"
+WHITE = "\u001b[37m"
+RESET = "\u001b[0m"
 
 # ***METHOD DEFINITIONS***
 
 # Header text method
 def header():
-    print("\n\n       ****   Binary Math Program (Beta 2.2)   ****\n\n")
+    print("\n\n       ****   Binary Math Program (Beta 3.0)   ****\n\n")
     print("                                     (c) Walker Tech inc.")
 
 # menu text method
 def menu():
-    print("*********************************************************\n")
-    print("                       Main Menu                         \n")
-    print("*********************************************************\n")
-    print("**     [1] Find one's complement of a binary number")
-    print("**     [2] Find two's complement of a binary number")
-    print("**     [3] Add two numbers using one's complement")
-    print("**     [4] Add two numbers using two's complement")
-    print("**     [5] Developer menu")
-    print("**     [0] Exit program\n")
-    print("*********************************************************\n")
+    print(BLUE + "*********************************************************\n")
+    print(WHITE + "                       Main Menu                         \n")
+    print(BLUE + "*********************************************************")
+    print(BLUE + "**")
+    print(BLUE + "**     " + YELLOW + "[1]" + CYAN + " Find one's complement of a binary number")
+    print(BLUE + "**     " + YELLOW + "[2]" + CYAN + " Find two's complement of a binary number")
+    print(BLUE + "**     " + YELLOW + "[3]" + CYAN + " Add two numbers using one's complement")
+    print(BLUE + "**     " + YELLOW + "[4]" + CYAN + " Add two numbers using two's complement")
+    print(BLUE + "**     " + YELLOW + "[5]" + CYAN + " Developer menu")
+    print(BLUE + "**     " + YELLOW + "[0]" + CYAN + " Exit program")
+    print(BLUE + "**")
+    print(BLUE + "*********************************************************\n" + RESET)
 
 
 # Find one's complement of a binary number
 def ones():
     # Input
-    number = str(input("Enter a binary number: "))
+    number = str(input(YELLOW + "Enter a binary number: " + RED))
 
     # Flip each digit
     newNumber = ""
@@ -39,13 +54,13 @@ def ones():
             newNumber = newNumber + "0"
 
     # print
-    print("Your new number is: " + newNumber)
+    print(GREEN + "\nYour new number is: " + MAGENTA + newNumber + WHITE)
 
 
 # Find two's complement of a binary number
 def twos():
     # Input
-    number = str(input("Enter a binary number: "))
+    number = str(input(YELLOW + "Enter a binary number: " + RED))
 
     # Flip each Digit
     newNumber = ""
@@ -60,15 +75,15 @@ def twos():
     newNumber = oneAddSub(newNumber, one, "answer")
 
     # Print
-    print("Your new number is: " + newNumber)
+    print(GREEN + "\nYour new number is: " + MAGENTA + newNumber + WHITE)
 
 
 
 # Add two numbers using one's comlement
 def oneAdd():
     # Take input
-    numOne = str(input("Enter your first number: "))
-    numTwo = str(input("Enter your second number: "))
+    numOne = str(input(YELLOW + "Enter your first number: " + RED))
+    numTwo = str(input(YELLOW + "Enter your second number: " + RED))
 
     # Normalize lengths (if not the same)
     if (len(numOne) < len(numTwo)):
@@ -83,16 +98,16 @@ def oneAdd():
     if oneAddSub(numOne, numTwo, "buffer")[len(numOne)] == "1":
         one = normalize("1", len(subAnswer))
         subAnswer = oneAddSub(subAnswer, one, "answer")
-        print("Answer: " + subAnswer)
+        print(GREEN + "\nAnswer: " + MAGENTA + subAnswer + WHITE)
     elif oneAddSub(numOne, numTwo, "buffer")[len(numOne)] == "0":
-        print("Answer: " + subAnswer)
+        print(GREEN + "\nAnswer: " + MAGENTA + subAnswer + WHITE)
 
 
 # Add two numbers using two's complement
 def twoAdd():
     # Input
-    numOne = str(input("Enter your first number: "))
-    numTwo = str(input("Enter your second number: "))
+    numOne = str(input(YELLOW + "Enter your first number: " + RED))
+    numTwo = str(input(YELLOW + "Enter your second number: " + RED))
 
     # Add
     subAnswer = oneAddSub(numOne, numTwo, "answer")
@@ -100,9 +115,9 @@ def twoAdd():
     # If there is a carry, add to start of answer; else, just print
     if oneAddSub(numOne, numTwo, "buffer")[len(numOne)] == "1":
         subAnswer = "1" + subAnswer
-        print("Answer: " + subAnswer)
+        print(GREEN + "\nAnswer: " + MAGENTA + subAnswer + WHITE)
     elif oneAddSub(numOne, numTwo, "buffer")[len(numOne)] == "0":
-        print("Answer: " + subAnswer)
+        print(GREEN + "\nAnswer: " + MAGENTA + subAnswer + WHITE)
       
 
 # Additional sub-method for actually adding numbers
@@ -155,6 +170,7 @@ def devMenu():
     while (True):
         print("      ****  Developer Menu   ****")
         print("Please note that these features are temporary and/or developmental, so don't expect them to work!")
+        print("Also sorry no color but this is dev menu so deal with it")
         print("[1] normalize binary number")
         print("[2] Base binary addition method")
         print("[0] Return to previous menu\n")
@@ -189,8 +205,8 @@ newLine = "\n \n \n"
 header()
 while (True):
     menu()
-    selection = input("Select a menu option: ")
-    print("\n")
+    selection = input(YELLOW + "Select a menu option: " + RED)
+    print(RESET + "\n")
     if selection == "1":
         ones()
         print(newLine)
@@ -211,5 +227,5 @@ while (True):
     else:
         print("invalid input" + newLine)
     
-print("Quitting....\n")
-print("Thanks for using my program!\n-N")
+print(GREEN + "\n\nQuitting....\n")
+print(GREEN + "Thanks for using my program!\n\n" + BLUE + "-N" + RESET)
