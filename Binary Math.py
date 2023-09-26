@@ -1,10 +1,11 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: Beta 3.1
-# Date: 9-24-23
+# Version: Beta 3.2
+# Date: 9-25-23
 
-
+# Import
+import time
 
 # Color Definitions
 BLACK = "\u001b[30m"
@@ -21,10 +22,10 @@ RESET = "\u001b[0m"
 
 # Header text method
 def header():
-    print("\n\n       ****   Binary Math Program (Beta 3.1)   ****\n\n")
+    print("\n\n       ****   Binary Math Program (Beta 3.2)   ****\n\n")
     print("                                     (c) Walker Tech inc.")
 
-# menu text method
+# Menu text method
 def menu():
     print(BLUE + "*********************************************************\n")
     print(WHITE + "                       Main Menu                         \n")
@@ -266,3 +267,4 @@ while (True):
     
 print(GREEN + "\n\nQuitting....\n")
 print(GREEN + "Thanks for using my program!\n\n" + BLUE + "-N" + RESET)
+time.sleep(1)
