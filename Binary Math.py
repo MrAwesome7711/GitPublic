@@ -1,7 +1,7 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: Beta 3.2
+# Version: 1.0
 # Date: 9-25-23
 
 # Import
@@ -22,7 +22,7 @@ RESET = "\u001b[0m"
 
 # Header text method
 def header():
-    print("\n\n       ****   Binary Math Program (Beta 3.2)   ****\n\n")
+    print("\n\n       ****   Binary Math Program   ****\n\n")
     print("                                     (c) Walker Tech inc.")
 
 # Menu text method
