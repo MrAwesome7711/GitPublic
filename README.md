@@ -7,7 +7,7 @@ Here is a description of current programs
   + Language: Python
   + Author: Nathan Walker
   + Description: Performs various binary operations, such as taking complements and addition
-  + Last Update: Beta 3.2, 9-25-23
+  + Last Update: Version 1.0, 9-25-23
 - Base Conversion
   + Language: Java
   + Author: Nathan Walker
