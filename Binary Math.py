@@ -1,8 +1,8 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: 1.0
-# Date: 9-25-23
+# Version: 1.2
+# Date: 9-26-23
 
 # Import
 import time
@@ -80,7 +80,7 @@ def twos():
 
 
 
-# Add two numbers using one's comlement
+# Add two numbers using one's complement
 def oneAdd():
     # Take input
     numOne = str(input(YELLOW + "Enter your first number: " + RED))
@@ -119,12 +119,8 @@ def twoAdd():
     # Add
     subAnswer = oneAddSub(numOne, numTwo, "answer")
 
-    # If there is a carry, add to start of answer; else, just print
-    if oneAddSub(numOne, numTwo, "buffer")[len(numOne)] == "1":
-        subAnswer = "1" + subAnswer
-        print(GREEN + "\nAnswer: " + MAGENTA + subAnswer + WHITE)
-    elif oneAddSub(numOne, numTwo, "buffer")[len(numOne)] == "0":
-        print(GREEN + "\nAnswer: " + MAGENTA + subAnswer + WHITE)
+    # Print the answer
+    print(GREEN + "\nAnswer: " + MAGENTA + subAnswer + WHITE)
 
 
 
@@ -237,9 +233,9 @@ def addTwo(numOne, numTwo, complement):
     # Carry handling for each complement
     if buffer[len(numOne)] == "1":
         if complement == "one":
-            return addTwo(answer, normalize("1", answer), "one")
+            return addTwo(answer, normalize("1", len(answer)), "one")
         if complement == "two":
-            return "1" + answer
+            return answer
     if buffer[len(numOne)] == "0":
         return answer
    
