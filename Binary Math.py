@@ -1,13 +1,13 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: 1.3
+# Version: 2.0
 # Date: 9-26-23
 
 # Import
 import time
 
-# Color Definitions
+# Color definitions
 BLACK = "\u001b[30m"
 RED = "\u001b[31m"
 GREEN = "\u001b[32m"
@@ -18,6 +18,10 @@ CYAN = "\u001b[36m"
 WHITE = "\u001b[37m"
 RESET = "\u001b[0m"
 
+# Static variable definitions
+LINE = "**     "
+
+
 # ***METHOD DEFINITIONS***
 
 # Header text method
@@ -25,24 +29,26 @@ def header():
     print(RESET + "\n\n       ****   Binary Math Program   ****\n\n")
     print("                                     (c) Walker Tech inc.")
 
+
 # Menu text method
 def menu():
     print(BLUE + "*********************************************************\n")
     print(WHITE + "                       Main Menu                         \n")
     print(BLUE + "*********************************************************")
-    print(BLUE + "**")
-    print(BLUE + "**     " + YELLOW + "[1]" + CYAN + " Find one's complement of a binary number")
-    print(BLUE + "**     " + YELLOW + "[2]" + CYAN + " Find two's complement of a binary number")
-    print(BLUE + "**     " + YELLOW + "[3]" + CYAN + " Add two numbers using one's complement")
-    print(BLUE + "**     " + YELLOW + "[4]" + CYAN + " Add two numbers using two's complement")
-    print(BLUE + "**     " + YELLOW + "[5]" + CYAN + " Developer menu")
-    print(BLUE + "**     " + YELLOW + "[0]" + CYAN + " Exit program")
-    print(BLUE + "**")
+    print(BLUE + LINE)
+    print(BLUE + LINE + YELLOW + "[1]" + CYAN + " Find one's complement of a number")
+    print(BLUE + LINE + YELLOW + "[2]" + CYAN + " Find two's complement of a number")
+    print(BLUE + LINE + YELLOW + "[3]" + CYAN + " Add two numbers")
+    print(BLUE + LINE + YELLOW + "[4]" + CYAN + " Developer menu")
+    print(BLUE + LINE + YELLOW + "[0]" + CYAN + " Exit program")
+    print(BLUE + LINE)
     print(BLUE + "*********************************************************\n" + RESET)
 
 
+
+
 # Find one's complement of a binary number
-def ones():
+def one():
     # Input
     number = str(input(YELLOW + "Enter a binary number: " + RED))
 
@@ -59,7 +65,7 @@ def ones():
 
 
 # Find two's complement of a binary number
-def twos():
+def two():
     # Input
     number = str(input(YELLOW + "Enter a binary number: " + RED))
 
@@ -72,41 +78,25 @@ def twos():
             newNumber = newNumber + "0"
     
     # Add one
-    newNumber = (addTwo(newNumber, normalize("1", len(newNumber)), "two"))
+    newNumber = (add_two(newNumber, normalize("1", len(newNumber)), 2))
 
     # Print
     print(GREEN + "\nYour new number is: " + MAGENTA + newNumber + WHITE)
 
-
-
-# Add two numbers using one's complement
-def oneAdd():
+# Addition main method
+def add():
     # Take input
+    complement = input(YELLOW + "One's complement (1), or two's complement (2): " + RED)
     numOne = str(input(YELLOW + "Enter your first number: " + RED))
     numTwo = str(input(YELLOW + "Enter your second number: " + RED))
-
+    
     # Compute
-    answer = addTwo(numOne, numTwo, "one")
-
-    # Print
-    print(GREEN + "\nAnswer: " + MAGENTA + answer + WHITE)
-
-
-# Add two numbers using two's complement
-def twoAdd():
-    # Input
-    numOne = str(input(YELLOW + "Enter your first number: " + RED))
-    numTwo = str(input(YELLOW + "Enter your second number: " + RED))
-
-    # Compute
-    answer = addTwo(numOne, numTwo, "two")
-
-    # Print
+    answer = add_two(numOne, numTwo, complement)
     print(GREEN + "\nAnswer: " + MAGENTA + answer + WHITE)
     
     
-# Add two binary numbers - New and improved!
-def addTwo(numOne, numTwo, complement):
+# Add two binary numbers - new and improved!
+def add_two(numOne, numTwo, complement):
     # Variables
     buffer = "0"
     answer = ""
@@ -123,27 +113,27 @@ def addTwo(numOne, numTwo, complement):
         y = len(numOne) - x - 1
 
         # Take sum of digits in two numbers and buffer
-        sum = int(numOne[y]) + int(numTwo[y]) + int(buffer[x])
-        # if 0, zero in answer and no carry
-        if sum == 0:
+        total = int(numOne[y]) + int(numTwo[y]) + int(buffer[x])
+        # If 0, zero in answer and no carry
+        if total == 0:
             answer = "0" + answer
             buffer = buffer + "0"
-        # if 1, one in answer and no carry
-        elif sum == 1:
+        # If 1, one in answer and no carry
+        elif total == 1:
             answer = "1" + answer
             buffer = buffer + "0"
-        # if 2, zero in answer and carry one
-        elif sum == 2:
+        # If 2, zero in answer and carry one
+        elif total == 2:
             answer = "0" + answer
             buffer = buffer + "1"
-        # if 3, one in answer and carry one
-        elif sum == 3:
+        # If 3, one in answer and carry one
+        elif total == 3:
             answer = "1" + answer
             buffer = buffer + "1"
     
     # Carry handling for each complement
-    if buffer[len(numOne)] == "1" and complement == "one":
-        return addTwo(answer, normalize("1", len(answer)), "one")
+    if buffer[len(numOne)] == "1" and complement == 1:
+        return add_two(answer, normalize("1", len(answer)), "one")
     else:
         return answer
 
@@ -156,7 +146,7 @@ def normalize(number, length):
 
 
 # Color Menu        
-def colorMenu():
+def color_menu():
     print("Color Menu")
     print("[1] Black")
     print("[2] Red")
@@ -191,7 +181,7 @@ def colorMenu():
 
 
 # Dev menu
-def devMenu():
+def dev_menu():
     newLine = "\n \n \n"
     while (True):
         print("      ****  Developer Menu   ****")
@@ -201,7 +191,6 @@ def devMenu():
         print("[2] NEW Binary Addition")
         print("[3] Color Menu")
         print("[4] Endless Addition")
-        print("[5] Multiply Binary Numbers")
         print("[0] Return to previous menu\n")
         selection = input("Select and option: ")
         print("\n")
@@ -214,14 +203,11 @@ def devMenu():
             number1 = str(input("Enter a number: "))
             number2 = str(input("Enter another number: "))
             argument1 = str(input("one or two complement?: "))
-            print("Answer: " + addTwo(number1, number2, argument1))
+            print("Answer: " + add_two(number1, number2, argument1))
             print(newLine)
         elif selection == "3":
-            colorMenu()
+            color_menu()
         elif selection == "4":
-            print("Placeholder message here :)")
-            print(newLine)
-        elif selection == "5":
             print("Placeholder message here :)")
             print(newLine)
         elif selection == "0":
@@ -231,9 +217,7 @@ def devMenu():
 
 
 
-
-
-# ****MAIN METHOD****
+# MAIN METHOD
 newLine = "\n \n \n"
 header()
 while (True):
@@ -241,19 +225,16 @@ while (True):
     selection = input(YELLOW + "Select a menu option: " + RED)
     print(RESET + "\n")
     if selection == "1":
-        ones()
+        one()
         print(newLine)
     elif selection == "2":
-        twos()
+        two()
         print(newLine)
     elif selection == "3":
-        oneAdd()
+        add()
         print(newLine)
     elif selection == "4":
-        twoAdd()
-        print(newLine)
-    elif selection == "5":
-        devMenu()
+        dev_menu()
         print(newLine)
     elif selection == "0":
         break
