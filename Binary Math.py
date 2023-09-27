@@ -1,7 +1,7 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: 1.2
+# Version: 1.3
 # Date: 9-26-23
 
 # Import
@@ -22,7 +22,7 @@ RESET = "\u001b[0m"
 
 # Header text method
 def header():
-    print("\n\n       ****   Binary Math Program   ****\n\n")
+    print(RESET + "\n\n       ****   Binary Math Program   ****\n\n")
     print("                                     (c) Walker Tech inc.")
 
 # Menu text method
@@ -72,8 +72,7 @@ def twos():
             newNumber = newNumber + "0"
     
     # Add one
-    one = normalize("1", len(newNumber))
-    newNumber = oneAddSub(newNumber, one, "answer")
+    newNumber = (addTwo(newNumber, normalize("1", len(newNumber)), "two"))
 
     # Print
     print(GREEN + "\nYour new number is: " + MAGENTA + newNumber + WHITE)
@@ -86,22 +85,11 @@ def oneAdd():
     numOne = str(input(YELLOW + "Enter your first number: " + RED))
     numTwo = str(input(YELLOW + "Enter your second number: " + RED))
 
-    # Normalize lengths (if not the same)
-    if (len(numOne) < len(numTwo)):
-        numOne = normalize(numOne, len(numTwo))
-    if (len(numTwo) < len(numOne)):
-        numTwo = normalize(numTwo, len(numOne))
+    # Compute
+    answer = addTwo(numOne, numTwo, "one")
 
-    # Add
-    subAnswer = oneAddSub(numOne, numTwo, "answer")
-
-    # If there is a carry, add one and print; else, just print
-    if oneAddSub(numOne, numTwo, "buffer")[len(numOne)] == "1":
-        one = normalize("1", len(subAnswer))
-        subAnswer = oneAddSub(subAnswer, one, "answer")
-        print(GREEN + "\nAnswer: " + MAGENTA + subAnswer + WHITE)
-    elif oneAddSub(numOne, numTwo, "buffer")[len(numOne)] == "0":
-        print(GREEN + "\nAnswer: " + MAGENTA + subAnswer + WHITE)
+    # Print
+    print(GREEN + "\nAnswer: " + MAGENTA + answer + WHITE)
 
 
 # Add two numbers using two's complement
@@ -110,89 +98,12 @@ def twoAdd():
     numOne = str(input(YELLOW + "Enter your first number: " + RED))
     numTwo = str(input(YELLOW + "Enter your second number: " + RED))
 
-    # Normalize lengths (if not the same)
-    if (len(numOne) < len(numTwo)):
-        numOne = normalize(numOne, len(numTwo))
-    if (len(numTwo) < len(numOne)):
-        numTwo = normalize(numTwo, len(numOne))
+    # Compute
+    answer = addTwo(numOne, numTwo, "two")
 
-    # Add
-    subAnswer = oneAddSub(numOne, numTwo, "answer")
-
-    # Print the answer
-    print(GREEN + "\nAnswer: " + MAGENTA + subAnswer + WHITE)
-
-
-
-# Color Menu        
-def colorMenu():
-    print("Color Menu")
-    print("[1] Black")
-    print("[2] Red")
-    print("[3] Green")
-    print("[4] Blue")
-    print("[5] Magenta")
-    print("[6] Cyan")
-    print("[7] White")
-    selection = input(YELLOW + "Select a menu option: " + RED)
-    print(WHITE + "\n\n")
-    if selection == "1":
-        print(BLACK)
-        exit()
-    elif selection == "2":
-        print(RED)
-        exit()
-    elif selection == "3":
-        print(GREEN)
-        exit()
-    elif selection == "4":
-        print(BLUE)
-        exit()
-    elif selection == "5":
-        print(MAGENTA)
-        exit()
-    elif selection == "6":
-        print(CYAN)
-        exit()
-    elif selection == "7":
-        print(WHITE)
-        exit()      
-
-# Additional sub-method for actually adding numbers
-def oneAddSub(numOne, numTwo, returnValue):
-    # Variables
-    buffer = "0"
-    answer = ""
-
-    # Main loop
-    for x in range(len(numOne)):
-        # Add a variable that allows going through strings backwards
-        y = len(numOne) - x - 1
-
-        # Take sum of digits in two numbers and buffer
-        sum = int(numOne[y]) + int(numTwo[y]) + int(buffer[x])
-        # if 0, zero in answer and no carry
-        if sum == 0:
-            answer = "0" + answer
-            buffer = buffer + "0"
-        # if 1, one in answer and no carry
-        elif sum == 1:
-            answer = "1" + answer
-            buffer = buffer + "0"
-        # if 2, zero in answer and carry one
-        elif sum == 2:
-            answer = "0" + answer
-            buffer = buffer + "1"
-        # if 3, one in answer and carry one
-        elif sum == 3:
-            answer = "1" + answer
-            buffer = buffer + "1"
+    # Print
+    print(GREEN + "\nAnswer: " + MAGENTA + answer + WHITE)
     
-    # Method argument for returning either answer or buffer
-    if returnValue == "answer":
-        return answer
-    elif returnValue == "buffer":
-        return buffer
     
 # Add two binary numbers - New and improved!
 def addTwo(numOne, numTwo, complement):
@@ -231,22 +142,55 @@ def addTwo(numOne, numTwo, complement):
             buffer = buffer + "1"
     
     # Carry handling for each complement
-    if buffer[len(numOne)] == "1":
-        if complement == "one":
-            return addTwo(answer, normalize("1", len(answer)), "one")
-        if complement == "two":
-            return answer
-    if buffer[len(numOne)] == "0":
+    if buffer[len(numOne)] == "1" and complement == "one":
+        return addTwo(answer, normalize("1", len(answer)), "one")
+    else:
         return answer
-   
+
+  
 # Additional sub-method to normalize a number to a given length by adding zeros
 def normalize(number, length):
     while len(number) < length:
         number = "0" + number
     return number
-        
 
-#Dev menu
+
+# Color Menu        
+def colorMenu():
+    print("Color Menu")
+    print("[1] Black")
+    print("[2] Red")
+    print("[3] Green")
+    print("[4] Blue")
+    print("[5] Magenta")
+    print("[6] Cyan")
+    print("[7] White")
+    selection = input(YELLOW + "Select a menu option: " + RED)
+    print(WHITE + "\n\n")
+    if selection == "1":
+        print(BLACK)
+        exit()
+    elif selection == "2":
+        print(RED)
+        exit()
+    elif selection == "3":
+        print(GREEN)
+        exit()
+    elif selection == "4":
+        print(BLUE)
+        exit()
+    elif selection == "5":
+        print(MAGENTA)
+        exit()
+    elif selection == "6":
+        print(CYAN)
+        exit()
+    elif selection == "7":
+        print(WHITE)
+        exit()  
+
+
+# Dev menu
 def devMenu():
     newLine = "\n \n \n"
     while (True):
