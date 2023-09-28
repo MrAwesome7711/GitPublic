@@ -1,7 +1,7 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: 2.3
+# Version: 2.4
 # Date: 9-27-23
 
 # Import
@@ -38,12 +38,11 @@ def menu():
     print(BLUE + LINE)
     print(BLUE + LINE + YELLOW + "[1]" + CYAN + " Find one's complement of a number")
     print(BLUE + LINE + YELLOW + "[2]" + CYAN + " Find two's complement of a number")
-    print(BLUE + LINE + YELLOW + "[3]" + CYAN + " Add two numbers")
+    print(BLUE + LINE + YELLOW + "[3]" + CYAN + " Add numbers")
     print(BLUE + LINE + YELLOW + "[4]" + CYAN + " Developer menu")
     print(BLUE + LINE + YELLOW + "[0]" + CYAN + " Exit program")
     print(BLUE + LINE)
     print(BLUE + "*********************************************************\n" + RESET)
-
 
 
 # Find one's complement of a binary number
@@ -83,20 +82,8 @@ def two():
     print(GREEN + "\nYour new number is: " + MAGENTA + newNumber + WHITE)
 
 
-# Addition main method
+# NEW Addition main method
 def add():
-    # Take input
-    complement = input(YELLOW + "One's complement (1), or two's complement (2): " + RED)
-    numOne = str(input(YELLOW + "Enter your first number: " + RED))
-    numTwo = str(input(YELLOW + "Enter your second number: " + RED))
-    
-    # Compute
-    answer = add_two(numOne, numTwo, complement)
-    print(GREEN + "\nAnswer: " + MAGENTA + answer + WHITE)
-
-
-# (NEW) Addition main method -- Experimental
-def addnew():
     # Variables
     numbers = []
     number = "temp"
@@ -107,7 +94,7 @@ def addnew():
     while number != "":
         number = str(input(YELLOW + "Enter another number or hit enter to continue: " + RED))
         numbers.append(number)
-    return add_many(numbers, complement)
+    print(GREEN + "\nAnswer: " + MAGENTA + add_many(numbers, complement) + WHITE)
 
     
 # Add two binary numbers
@@ -213,9 +200,8 @@ def dev_menu():
         print("Please note that these features are temporary and/or developmental, so don't expect them to work!")
         print("Also sorry no color but this is dev menu so deal with it")
         print("[1] normalize binary number")
-        print("[2] NEW Binary Addition of more than two numbers!")
-        print("[3] Color Menu")
-#        print("[4] Endless Addition")
+        print("[2] Color Menu")
+#        print("[3] Endless Addition")
         print("[0] Return to previous menu\n")
         selection = input("Select and option: ")
         print("\n")
@@ -225,11 +211,8 @@ def dev_menu():
             print(normalize(number, length))
             print(newLine)
         elif selection == "2":
-            addnew()
-            print(newLine)
-        elif selection == "3":
             color_menu()
-#        elif selection == "4":
+#        elif selection == "3":
 #            print("Placeholder message here :)")
 #            print(newLine)
         elif selection == "0":
