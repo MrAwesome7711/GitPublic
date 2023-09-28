@@ -1,8 +1,8 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: 2.1
-# Date: 9-26-23
+# Version: 2.2
+# Date: 9-27-23
 
 # Import
 import time
@@ -132,8 +132,8 @@ def add_two(numOne, numTwo, complement):
             buffer = buffer + "1"
     
     # Carry handling for each complement
-    if buffer[len(numOne)] == "1" and complement == 1:
-        return add_two(answer, normalize("1", len(answer)), "one")
+    if buffer[len(numOne)] == "1" and complement == "1":
+        return add_two(answer, normalize("1", len(answer)), 1)
     else:
         return answer
 
