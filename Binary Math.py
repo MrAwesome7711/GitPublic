@@ -1,8 +1,8 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: 2.5
-# Date: 9-27-23
+# Version: 2.6
+# Date: 9-29-23
 
 # Import
 import time
@@ -112,9 +112,9 @@ def multiply():
         y = len(number2) - x - 1
 
         # Add zeroes to the end
-        if number2[y] == 1:
+        if number2[y] == "1":
             temp = number1
-            for z in range(y):
+            for z in range(x):
                 temp = temp + "0"
             numbers.append(temp)
     
