@@ -1,7 +1,7 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: 2.4
+# Version: 2.5
 # Date: 9-27-23
 
 # Import
@@ -82,7 +82,7 @@ def two():
     print(GREEN + "\nYour new number is: " + MAGENTA + newNumber + WHITE)
 
 
-# NEW Addition main method
+# Addition main method
 def add():
     # Variables
     numbers = []
@@ -96,7 +96,32 @@ def add():
         numbers.append(number)
     print(GREEN + "\nAnswer: " + MAGENTA + add_many(numbers, complement) + WHITE)
 
+
+# IN DEVELOPMENT Multiplication main method
+def multiply():
+    # Variables
+    numbers = []
+
+    # Input
+    number1 = str(input(YELLOW + "Enter your first number: " + RED))
+    number2 = str(input(YELLOW + "Enter your second number number: " + RED))
+
+    # Main loop
+    for x in range(len(number2)):
+        # Add a variable that allows going through strings backwards
+        y = len(number2) - x - 1
+
+        # Add zeroes to the end
+        if number2[y] == 1:
+            temp = number1
+            for z in range(y):
+                temp = temp + "0"
+            numbers.append(temp)
     
+    # Add numbers and print
+    print(GREEN + "\nAnswer: " + MAGENTA + add_many(numbers, "M") + WHITE)
+    
+   
 # Add two binary numbers
 def add_two(numOne, numTwo, complement):
     # Variables
@@ -136,6 +161,8 @@ def add_two(numOne, numTwo, complement):
     # Carry handling for each complement
     if buffer[len(numOne)] == "1" and complement == "1":
         return add_two(answer, normalize("1", len(answer)), 1)
+    elif buffer[len(numOne)] == "1" and complement == "M":
+        return "1" + answer
     else:
         return answer
 
@@ -199,9 +226,9 @@ def dev_menu():
         print("      ****  Developer Menu   ****")
         print("Please note that these features are temporary and/or developmental, so don't expect them to work!")
         print("Also sorry no color but this is dev menu so deal with it")
-        print("[1] normalize binary number")
+        print("[1] Normalize binary number")
         print("[2] Color Menu")
-#        print("[3] Endless Addition")
+        print("[3] Multiply two numbers")
         print("[0] Return to previous menu\n")
         selection = input("Select and option: ")
         print("\n")
@@ -212,9 +239,9 @@ def dev_menu():
             print(newLine)
         elif selection == "2":
             color_menu()
-#        elif selection == "3":
-#            print("Placeholder message here :)")
-#            print(newLine)
+        elif selection == "3":
+            multiply()
+            print(newLine)
         elif selection == "0":
             break
         else:
