@@ -1,7 +1,7 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: 2.6
+# Version: 3.0
 # Date: 9-29-23
 
 # Import
@@ -20,6 +20,7 @@ RESET = "\u001b[0m"
 
 # Static variable definitions
 LINE = "**     "
+NEWLINE = "\n \n \n"
 
 
 # ***METHOD DEFINITIONS***
@@ -27,7 +28,7 @@ LINE = "**     "
 # Header text method
 def header():
     print(RESET + "\n\n            ****   Binary Math Program   ****\n\n")
-    print("                                     (c) Walker Tech inc.")
+    print("v. 3.0                               (c) Walker Tech inc.")
 
 
 # Menu text method
@@ -39,7 +40,8 @@ def menu():
     print(BLUE + LINE + YELLOW + "[1]" + CYAN + " Find one's complement of a number")
     print(BLUE + LINE + YELLOW + "[2]" + CYAN + " Find two's complement of a number")
     print(BLUE + LINE + YELLOW + "[3]" + CYAN + " Add numbers")
-    print(BLUE + LINE + YELLOW + "[4]" + CYAN + " Developer menu")
+    print(BLUE + LINE + YELLOW + "[4]" + CYAN + " Multiply numbers")
+    print(BLUE + LINE + YELLOW + "[5]" + CYAN + " Developer menu")
     print(BLUE + LINE + YELLOW + "[0]" + CYAN + " Exit program")
     print(BLUE + LINE)
     print(BLUE + "*********************************************************\n" + RESET)
@@ -114,7 +116,7 @@ def multiply():
         # Add zeroes to the end
         if number2[y] == "1":
             temp = number1
-            for z in range(x):
+            for _i in range(x):
                 temp = temp + "0"
             numbers.append(temp)
     
@@ -221,14 +223,13 @@ def color_menu():
 
 # Dev menu
 def dev_menu():
-    newLine = "\n \n \n"
     while (True):
         print("      ****  Developer Menu   ****")
         print("Please note that these features are temporary and/or developmental, so don't expect them to work!")
         print("Also sorry no color but this is dev menu so deal with it")
         print("[1] Normalize binary number")
         print("[2] Color Menu")
-        print("[3] Multiply two numbers")
+#        print("[3] Multiply two numbers")
         print("[0] Return to previous menu\n")
         selection = input("Select and option: ")
         print("\n")
@@ -236,21 +237,20 @@ def dev_menu():
             number = str(input("Enter a number: "))
             length = int(input("Enter a length: "))
             print(normalize(number, length))
-            print(newLine)
+            print(NEWLINE)
         elif selection == "2":
             color_menu()
-        elif selection == "3":
-            multiply()
-            print(newLine)
+#        elif selection == "3":
+#            multiply()
+#            print(newLine)
         elif selection == "0":
             break
         else:
-            print("invalid input" + newLine)
+            print("invalid input" + NEWLINE)
 
 
 
 # MAIN METHOD
-newLine = "\n \n \n"
 header()
 while (True):
     menu()
@@ -258,20 +258,23 @@ while (True):
     print(RESET + "\n")
     if selection == "1":
         one()
-        print(newLine)
+        print(NEWLINE)
     elif selection == "2":
         two()
-        print(newLine)
+        print(NEWLINE)
     elif selection == "3":
         add()
-        print(newLine)
+        print(NEWLINE)
     elif selection == "4":
+        multiply()
+        print(NEWLINE)
+    elif selection == "5":
         dev_menu()
-        print(newLine)
+        print(NEWLINE)
     elif selection == "0":
         break
     else:
-        print("invalid input" + newLine)
+        print("invalid input" + NEWLINE)
     
 print(GREEN + "\n\nQuitting....\n")
 print(GREEN + "Thanks for using my program!\n\n" + BLUE + "-N" + RESET)
