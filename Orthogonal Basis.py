@@ -1,9 +1,32 @@
 # Title: Orthogonal Basis
-# Description:
+# Description: A process to compute a basis that is orthogonal to a given basis
 # Author: Nathan Walker
-# Version: 1.0
+# Version: 1.1
 # Date: 11-21-23
 # ***METHOD DEFINITIONS***
+
+# subscripts
+def sub(number):
+    if number == 0:
+        return "\u2070"
+    elif number == 1:
+        return "\u00B9"
+    elif number == 2:
+        return "\u00B2"
+    elif number == 3:
+        return "\u00B3"
+    elif number == 4:
+        return "\u2074"
+    elif number == 5:
+        return "\u2075"
+    elif number == 6:
+        return "\u2076"
+    elif number == 7:
+        return "\u2077"
+    elif number == 8:
+        return "\u2078"
+    elif number == 9:
+        return "\u2079"
 
 # Convert Strings to Floating point numbers
 def str_to_int(stringList):
@@ -54,9 +77,13 @@ for x in range(1, len(B)):
 # Round and output
 K_Rounded = []
 for x in K:
+    templist = []
     for y in x:
-        K_Rounded.append(round(y, 3))
+        templist.append(round(y, 3))
+    K_Rounded.append(templist)
 print("\n")
-print(K_Rounded)
+print("Orthogonal Basis:")
+for x in range(len(K_Rounded)):
+    print("K"+ sub(x+1) + "=", K_Rounded[x])
 print("\n")
 
