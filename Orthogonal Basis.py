@@ -1,7 +1,7 @@
 # Title: Orthogonal Basis
 # Description: A process to compute a basis that is orthogonal to a given basis
 # Author: Nathan Walker
-# Version: 2.0
+# Version: 2.1
 # Date: 11-27-23
 
 
@@ -65,12 +65,13 @@ def normalize(vector):
 
 # ***MAIN METHOD***
 # Input and setup
-vector1 = (input("Enter your first vector in your basis with the form with spaces between the numbers (for example, '1 2 3 4' without quotes): ")).split()
+vector1 = (input("Enter the first vector in your basis with a space in between each number (for example, '1 2 3 4' without quotes): ")).split()
 basis_strings = []
 vector2 = vector1
 while vector2 != []:
     basis_strings.append(vector2)
-    vector2 = (input("Enter another vector or just press enter to continue: ")).split()
+    vector2 = (input("Enter another vector or press enter to continue: ")).split()
+# Placeholder
 B = str_to_int(basis_strings)
 
 # Compute orthogonal basis
