@@ -1,7 +1,7 @@
 # Title: Orthogonal Basis
 # Description: A process to compute a basis that is orthogonal to a given basis
 # Author: Nathan Walker
-# Version: 2.2
+# Version: 2.3
 # Date: 11-27-23
 
 
@@ -71,7 +71,7 @@ vector2 = vector1
 while vector2 != []:
     basis_strings.append(vector2)
     vector2 = (input("Enter another vector or press enter to continue: ")).split()
-round = input("How many decimal places would you like your answers to be rounded to?")
+dec_place = eval(input("Enter the number of decimal places to which your answers should be rounded: "))
 B = str_to_int(basis_strings)
 
 # Compute orthogonal basis
@@ -89,7 +89,7 @@ K_Rounded = []
 for x in K:
     templist = []
     for y in x:
-        templist.append(round(y, round))
+        templist.append(round(y, dec_place))
     K_Rounded.append(templist)
 print("\n")
 print("Orthogonal Basis:")
@@ -107,7 +107,7 @@ N_Rounded = []
 for x in N:
     templist = []
     for y in x:
-        templist.append(round(y, round))
+        templist.append(round(y, dec_place))
     N_Rounded.append(templist)
 print("Orthonormal Basis:")
 for x in range(len(N_Rounded)):
