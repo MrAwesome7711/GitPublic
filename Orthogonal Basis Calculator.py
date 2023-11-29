@@ -1,11 +1,19 @@
-# Title: Orthogonal Basis
+# Title: Orthogonal Basis Calculator
 # Description: A process to compute a basis that is orthogonal to a given basis
 # Author: Nathan Walker
-# Version: 2.3
-# Date: 11-27-23
+# Version: 3.0
+# Date: 11-28-23
 
-
-# ***METHOD DEFINITIONS***
+# Color definitions
+BLACK = "\u001b[30m"
+RED = "\u001b[31m"
+GREEN = "\u001b[32m"
+YELLOW = "\u001b[33m"
+BLUE = "\u001b[34m"
+MAGENTA = "\u001b[35m"
+CYAN = "\u001b[36m"
+WHITE = "\u001b[37m"
+RESET = "\u001b[0m"
 
 # Subscript definitions
 def sub(number):
@@ -29,6 +37,9 @@ def sub(number):
         return "\u2078"
     elif number == 9:
         return "\u2079"
+
+
+# ***METHOD DEFINITIONS***
 
 # Convert Strings to floating point numbers
 def str_to_int(stringList):
@@ -64,14 +75,18 @@ def normalize(vector):
 
 
 # ***MAIN METHOD***
+
+# Header
+print(RESET + "\n                     **Orthogonal Basis Calculator** \n\n" + BLUE + "version 3.0\n")
+
 # Input and setup
-vector1 = (input("Enter the first vector in your basis with a space in between each number (for example, '1 2 3 4' without quotes): ")).split()
+vector1 = (input(YELLOW + "Enter the first vector in your basis with a space in between each number (for example, '1 2 3 4' without quotes): " + RED)).split()
 basis_strings = []
 vector2 = vector1
 while vector2 != []:
     basis_strings.append(vector2)
-    vector2 = (input("Enter another vector or press enter to continue: ")).split()
-dec_place = eval(input("Enter the number of decimal places to which your answers should be rounded: "))
+    vector2 = (input(YELLOW + "Enter another vector or press enter to continue: " + RED)).split()
+dec_place = eval(input(YELLOW + "Enter the number of decimal places to which your answers should be rounded: " + RED))
 B = str_to_int(basis_strings)
 
 # Compute orthogonal basis
@@ -92,10 +107,10 @@ for x in K:
         templist.append(round(y, dec_place))
     K_Rounded.append(templist)
 print("\n")
-print("Orthogonal Basis:")
+print(GREEN + "Orthogonal Basis:" + MAGENTA)
 for x in range(len(K_Rounded)):
     print("K"+ sub(x+1) + "=", K_Rounded[x])
-print("\n")
+print("\n" + RESET)
 
 # Compute orthonormal basis
 N = []
@@ -109,9 +124,9 @@ for x in N:
     for y in x:
         templist.append(round(y, dec_place))
     N_Rounded.append(templist)
-print("Orthonormal Basis:")
+print(GREEN + "Orthonormal Basis:" + MAGENTA)
 for x in range(len(N_Rounded)):
     print("N"+ sub(x+1) + "=", N_Rounded[x])
-print("\n")
+print("\n" + RESET)
 
 
