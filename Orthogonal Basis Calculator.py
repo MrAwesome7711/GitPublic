@@ -1,7 +1,7 @@
 # Title: Orthogonal Basis Calculator
 # Description: A process to compute a basis that is orthogonal to a given basis
 # Author: Nathan Walker
-# Version: 3.0
+# Version: 3.1
 # Date: 11-28-23
 
 # Color definitions
@@ -77,7 +77,7 @@ def normalize(vector):
 # ***MAIN METHOD***
 
 # Header
-print(RESET + "\n                     **Orthogonal Basis Calculator** \n\n" + BLUE + "version 3.0\n")
+print(RESET + "\n                                        **Orthogonal Basis Calculator** \n\n" + BLUE + "version 3.1\n")
 
 # Input and setup
 vector1 = (input(YELLOW + "Enter the first vector in your basis with a space in between each number (for example, '1 2 3 4' without quotes): " + RED)).split()
@@ -128,5 +128,7 @@ print(GREEN + "Orthonormal Basis:" + MAGENTA)
 for x in range(len(N_Rounded)):
     print("N"+ sub(x+1) + "=", N_Rounded[x])
 print("\n" + RESET)
+
+empty = input(BLUE + "Press enter to quit")
 
 
