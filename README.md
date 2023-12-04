@@ -13,3 +13,8 @@ Here is a description of current programs
   + Author: Nathan Walker
   + Description: Takes a number in a given base (between 2 and 36) and converts it to a number in another base (between 2 and 36)
   + Last Update: No version number, Sometime in spring 2023
+- Orthogonal Basis Calculator
+  + Language: Python
+  + Author: Nathan Walker
+  + Description: Calculates the Orthogonal and Orthonormal bases for a given set of vectors
+  + Last Update: Version 4.0, 12-4-23
