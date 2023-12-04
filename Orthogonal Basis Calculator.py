@@ -1,7 +1,7 @@
 # Title: Orthogonal Basis Calculator
 # Description: A process to compute a basis that is orthogonal to a given basis using the Gram-Schmidt process
 # Author: Nathan Walker
-# Version: 3.2
+# Version: 4.0
 # Date: 11-28-23
 
 # Color definitions
@@ -37,6 +37,12 @@ def sub(number):
         return "\u2078"
     elif number == 9:
         return "\u2079"
+    else:
+        scr = ""
+        string = str(number)
+        for x in string:
+            scr = scr + sub(eval(x))
+        return scr
 
 
 # ***METHOD DEFINITIONS***
@@ -77,15 +83,21 @@ def normalize(vector):
 # ***MAIN METHOD***
 
 # Header
-print(RESET + "\n                                        **Orthogonal Basis Calculator** \n\n" + CYAN + "version 3.2\n")
+print(RESET + "\n                                        **Orthogonal Basis Calculator** \n\n" + CYAN + "version 4.0\n")
 
 # Input and setup
-vector1 = (input(YELLOW + "Enter the first vector in your basis with a space in between each number (for example, '1 2 3 4' without quotes): " + RED)).split()
-basis_strings = []
-vector2 = vector1
-while vector2 != []:
-    basis_strings.append(vector2)
-    vector2 = (input(YELLOW + "Enter another vector or press enter to continue: " + RED)).split()
+error = True
+while(error == True):
+    error = False
+    vector1 = (input(YELLOW + "Enter the first vector in your basis with a space in between each number (for example, '1 2 3 4' without quotes): " + RED)).split()
+    basis_strings = []
+    vector2 = vector1
+    while vector2 != []:
+        basis_strings.append(vector2)
+        vector2 = (input(YELLOW + "Enter another vector or press enter to continue: " + RED)).split()
+    if len(basis_strings) > len(basis_strings[0]):
+        print(RED + "ERROR: THE NUMBER OF VECTORS CANNOT BE LARGER THAN THE SIZE OF EACH VECTOR")
+        error = True
 dec_place = eval(input(YELLOW + "Enter the number of decimal places to which your answers should be rounded: " + RED))
 B = str_to_int(basis_strings)
 
