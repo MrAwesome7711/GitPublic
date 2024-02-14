@@ -1,8 +1,8 @@
 # Title: Binary Math
 # Description: A program with various simple binary operations
 # Author: Nathan Walker
-# Version: 3.0
-# Date: 9-29-23
+# Version: 3.1
+# Date: 2-14-24
 
 # Import
 import time
@@ -226,7 +226,7 @@ def dev_menu():
     while (True):
         print("      ****  Developer Menu   ****")
         print("Please note that these features are temporary and/or developmental, so don't expect them to work!")
-        print("Also sorry no color but this is dev menu so deal with it")
+        print("Also sorry no color but this is the dev menu so deal with it.")
         print("[1] Normalize binary number")
         print("[2] Color Menu")
 #        print("[3] Multiply two numbers")
